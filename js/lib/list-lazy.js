@@ -134,8 +134,9 @@
                 v;
             while (i < l) {
                 v = this.get(i, i, this, true);
-                if (v instanceof Undef) l--;
-                else f.call(ctx, v, i, this);
+                if ( ! (v instanceof Undef)) {
+                  f.call(ctx, v, i, this);
+                }
                 i++;
             }
         },
@@ -145,10 +146,8 @@
                 v;
             loop: while (i < l) {
                 v = this.get(i, i, this, true);
-                if (v instanceof Undef) {
-                    l--;
-                } else {
-                    if (f.call(this, v, i) === false) break loop;
+                if ( ! (v instanceof Undef)) {
+                  if (f.call(this, v, i) === false) break loop;
                 }
                 i++;
             }
