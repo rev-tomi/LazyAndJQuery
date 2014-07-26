@@ -1,7 +1,6 @@
 var bridge = function(jq) {
   return {
     'get': function(n) {
-      console.log('getting ' + n);
       return jq.eq(n);
     },
     'length': function() {
@@ -13,10 +12,8 @@ var bridge = function(jq) {
 $(document).ready(function() {
   var ll = List.Lazy(bridge($("li")));
   ll.filter(function(jq) {
-    console.log('trying "' + jq.text() + "'");
     return jq.text().indexOf("Alice") > -1;
   }).each(function(jq) {
-    console.log(jq.text() + ' contains alice');
     jq.addClass('faded');
   });
 });
